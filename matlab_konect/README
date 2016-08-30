@@ -1,0 +1,40 @@
+
+
+This is the KONECT Matlab toolbox (KONECT-Toolbox).  KONECT is a network
+analysis project. 'KONECT' stands for Koblenz Network Collection. This
+toolbox contains Matlab code for analysing networks.   
+
+http://konect.uni-koblenz.de/
+
+== Installation ==
+
+The toolbox consists entirely of *.m files.  To use it, add this
+directory to the Matlab path, e.g., using addpath().  
+
+== Requirements ==
+
+Some functions need BGL, the Boost Graph Library. 
+
+Installation of BGL:
+* Download version 4.0.1 from website (newer versions may not work)
+* unzip it
+* (on some systems:  install libstdc++5 from http://packages.debian.org/stable/base/libstdc++5)
+* symlink the unzipped matlab_bgl to here
+  
+== About ==
+
+(c) Jerome Kunegis 2014
+
+The KONECT Matlab Toolbox is free software: you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.  The full text of the
+license can be found in the file 'COPYING' in this directory.
+
+The KONECT Matlab Toolbox is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License in the file 'COPYING' for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program.  If not, see <http://www.gnu.org/licenses/>.

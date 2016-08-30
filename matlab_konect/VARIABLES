@@ -1,0 +1,118 @@
+
+DEPRECATED - this information is now in the KONECT handbook:
+
+http://konect.uni-koblenz.de/publications
+
+___________________________________________________________
+
+Naming variables can be quite complicated and hard to read in
+Matlab. Therefore KONECT code follows these rules.   
+
+== Typography ==
+
+Long variable names (containing full words) are in all-lowercase. Words
+are separated by underscore.  When refering to a variable in comments,
+the variable is written in all-uppercase.
+
+Short variable names (letters) are lowercase for numbers and vectors,
+and uppercase for matrices.
+
+== Long names ==
+
+Since there are no types in Matlab we have to be careful to use
+consistent variable names.
+
+Most types are represented as strings:
+
+* Network: see uni/out.*, e.g. "advogato".  Also in lower case
+  with parts separated with dash. (Underscores and uppercase letters may
+  be used for older files and names from thord parties.)
+* Decomposition:  e.g. "sym", "asym", "back", "bip", "laps",
+  "lapb", "svd", etc.; optionally with '-n' appended; see
+  matlab/decomposition.m  
+* Format:  network format
+* Weights:  edge weight type
+* Code:  1/2/3-character code for a network, e.g. "EN" for Enron 
+* Statistic:  The name of a network statistic, i.e. a measure
+  characterizing the whole network, e.g. power, alcon, etc. 
+* Curve:  curve fitting method
+* Method:  link prediction method 
+* Measure:  a measure of link prediction accuracy:  map, auc, etc.
+* Label:  Readable name of things used in plots, tables, etc. 
+* Class: a set of networks, e.g. "test", "1", "2", "3", ...; the number "N" includes the 10*N smallest networks
+* Filename: A filename
+* Type:  "split" or "full"; decides which version of a network gets used, in particular for time-dependent analyses
+* Centrality: e.g. "degree", "decomp.sym", etc. 
+
+=== Other types ===
+
+* Rank (int):  rank used in decomposition, e.g. 49 [r]
+* Prediction (double):  link prediction score, i.e. a value returned by
+  a link prediction algorithm for a given node pair
+* Precision (double):  prediction accuracy value, typically between 0 and 1. 
+* Means (struct):  Values used for additive (de)normalization 
+
+== Short names ==
+
+In general, variables are named after their type as described here.  For
+some common variable types, there are shorter names.  These names follow
+the glossary in the PhD thesis of Jérôme Kunegis.   
+
+=== Scalars ===
+
+m	Row count, (left) vertex count
+n	Column count, (right) vertex count
+r	Rank of decomposition
+e 	Edge count 
+i,j	Vertices; i.e., indexes (vertices are numbered 1 to m or n)
+
+=== Matrices ===
+
+A	Adjacency matrix (in code where the adjacency and biadjacency matrix are distinguished)
+A	Adjacency or biadjacency matrix (in code where the two are not distinguished) 
+B	Biadjacency matrix (in code where the adjacency and biadjacency matrix are distinguished)
+L	Laplacian matrix
+M,N	Normalized (bi)adjacency matrix 
+Z	Normalized Laplacian matrix
+
+Delta 	Diagonality test matrix 
+
+At	(e*2 or e*3 or e*4) Compact adjacency matrix, as stored in out.* files 
+	First column:  row IDs
+	Second column:  column IDs
+	Third column:  edge weights (1 if not present)
+	Fourth column:  timestamps (seconds since 1970)
+	Can be converted to the adjacency matrix using myspconvert() 
+
+U	(m*r) Left part of decomposition; e.g., left eigenvectors
+V	(n*r) Right part of decomposition; e.g., right eigenvectors
+D	(r*r) Central matrix; e.g., eigenvalues; as matrix
+dd	(r*1) Diagonal central matrix
+X	(r*r) Central matrix, when explicitly nondiagonal 
+
+== Compound types ==
+
+A struct containing elements whose names are of a specific type are
+named [VALUETYPE]s_[KEYTYPE].  For instance, a struct with labels used for
+methods is called as follows:
+
+labels_method.('auc') = 'Area under the curve';
+
+Note:
+* First the name of the content type
+* The plural only of the content type
+
+== IDs ==
+
+Variables named "method", "decomposition", etc. are always strings.  If
+a method, decomposition or any other type is represented as an integer
+(e.g., as an index into an array), then "_id" is appended to the variable
+name. For instance:
+
+decomposition = 'sym';
+decomposition_id = 2; 
+
+This means that an array of values by ID of keys is called for instance:
+
+labels_decomposition_id{1} = 'Eigenvalue decomposition';
+labels_decomposition_id{2} = 'Singular value decomposition';
