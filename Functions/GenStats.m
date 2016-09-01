@@ -1,8 +1,15 @@
 function stats=GenStats(net)
 %获得26种网络属性统计结果
+
+%暂略
+%fprintf('度分布属性 - 富者俱乐部效应:rho=');
 %temp=konect_statistic_assortativity(net,1,1);
 %stats.rho=temp(1);
-%fprintf('\n');
+%fprintf('%f\n',stats.rho);
+
+fprintf('度分布属性 - 基尼系数:gini=');
+stats.gini=konect_statistic_gini(net,1,1);
+fprintf('%f\n',stats.gini);
 
 fprintf('度分布属性 - 边分布熵:entropye=');
 stats.entropye=konect_statistic_dentropy(net,1,1);
